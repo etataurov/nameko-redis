@@ -9,13 +9,13 @@ from redis import StrictRedis
 from nameko_redis import Redis, REDIS_URIS_KEY
 
 
-TEST_KEY = 'nameko-test-value',
+TEST_KEY = 'nameko-test-value'
 
 
 class ExampleService(object):
     name = "exampleservice"
 
-    redis = Redis()
+    redis = Redis('server')
 
     @dummy
     def write(self, value):
@@ -40,7 +40,7 @@ def redis_db(request):
 def test_end_to_end(redis_db):
     config = {
         REDIS_URIS_KEY: {
-            'exampleservice': redis_db
+            'server': redis_db
         }
     }
 

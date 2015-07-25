@@ -10,7 +10,7 @@ from nameko_redis import Redis
 class MyService(object):
     name = "my_service"
 
-    redis = Redis()
+    redis = Redis('development')
 
     @rpc
     def hello(self, name):
@@ -26,5 +26,5 @@ To specify redis connection string you will need a config
 ```yaml
 AMQP_URI: 'amqp://guest:guest@localhost'
 REDIS_URIS:
- my_service: 'redis://localhost:6379/0'
+ development: 'redis://localhost:6379/0'
 ```

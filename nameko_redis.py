@@ -6,13 +6,13 @@ REDIS_URIS_KEY = 'REDIS_URIS'
 
 
 class Redis(DependencyProvider):
-    def __init__(self):
+    def __init__(self, key):
+        self.key = key
         self.client = None
 
     def setup(self):
-        service_name = self.container.service_name
         redis_uris = self.container.config[REDIS_URIS_KEY]
-        self.redis_uri = redis_uris[service_name]
+        self.redis_uri = redis_uris[self.key]
 
     def start(self):
         self.client = _StrictRedis.from_url(self.redis_uri)
