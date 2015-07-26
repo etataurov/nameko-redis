@@ -19,7 +19,7 @@ class MyService(object):
 
     @rpc
     def bye(self):
-        name = self.redis.get("foo").decode('utf-8')
+        name = self.redis.get("foo")
         return "Bye, {}!".format(name)
 ```
 To specify redis connection string you will need a config

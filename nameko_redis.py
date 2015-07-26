@@ -15,7 +15,7 @@ class Redis(DependencyProvider):
         self.redis_uri = redis_uris[self.key]
 
     def start(self):
-        self.client = _StrictRedis.from_url(self.redis_uri)
+        self.client = _StrictRedis.from_url(self.redis_uri, decode_responses=True)
 
     def stop(self):
         self.client = None
