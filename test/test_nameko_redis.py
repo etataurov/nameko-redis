@@ -52,9 +52,9 @@ def test_end_to_end(redis_db):
         write("foobar")
 
     # verify changes written to redis
-    client = StrictRedis.from_url(redis_db)
-    assert client.get(TEST_KEY) == b'foobar'
+    client = StrictRedis.from_url(redis_db, decode_responses=True)
+    assert client.get(TEST_KEY) == "foobar"
 
     # read through the service
     with entrypoint_hook(container, "read") as read:
-        assert read() == b"foobar"
+        assert read() == "foobar"
