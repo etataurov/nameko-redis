@@ -1,4 +1,6 @@
 # nameko-redis
+[![PyPI version](https://badge.fury.io/py/nameko-redis.svg)](https://badge.fury.io/py/nameko-redis)
+
 Redis dependency for nameko services
 
 ## Installation
