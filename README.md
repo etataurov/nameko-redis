@@ -1,6 +1,11 @@
 # nameko-redis
 Redis dependency for nameko services
 
+## Installation
+```
+pip install nameko-redis
+```
+
 ## Usage
 ```python
 from nameko.rpc import rpc
