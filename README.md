@@ -1,5 +1,6 @@
 # nameko-redis
 [![PyPI version](https://badge.fury.io/py/nameko-redis.svg)](https://badge.fury.io/py/nameko-redis)
+[![Build Status](https://travis-ci.org/etataurov/nameko-redis.svg?branch=master)](https://travis-ci.org/etataurov/nameko-redis)
 
 Redis dependency for nameko services
 
