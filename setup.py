@@ -12,12 +12,6 @@ setup(
         "nameko>=2.0.0",
         "redis",
     ],
-    extras_require={
-        'test': [
-            "pytest>=3.0.7",
-            "mock>=2.0.0",
-        ],
-    },
     description='Redis dependency for nameko services',
     classifiers=[
         'Development Status :: 3 - Alpha',
