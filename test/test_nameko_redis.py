@@ -4,8 +4,9 @@ eventlet.monkey_patch()  # noqa (code before rest of imports)
 from nameko.containers import ServiceContainer
 from nameko.testing.services import entrypoint_hook, dummy
 import pytest
-
 from redis import StrictRedis
+from mock import patch, call
+
 from nameko_redis import Redis, REDIS_URIS_KEY
 
 
@@ -58,3 +59,44 @@ def test_end_to_end(redis_db):
     # read through the service
     with entrypoint_hook(container, "read") as read:
         assert read() == "foobar"
+
+
+class TestInitOptions(object):
+
+    @pytest.fixture
+    def strict_redis_cls(self):
+        with patch('nameko_redis._StrictRedis') as src:
+            yield src
+
+    def test_default_options(self, strict_redis_cls):
+        client = Redis('redis-uri')
+        client.redis_uri = 'redis-uri'
+
+        client.start()
+
+        assert [
+            call('redis-uri', decode_responses=True)
+        ] == strict_redis_cls.from_url.call_args_list
+
+    def test_options(self, strict_redis_cls):
+        client = Redis(
+            'redis-uri',
+            decode_responses=False,
+            retry_on_timeout=True,
+            socket_timeout=2,
+            encoding='utf-8'
+        )
+        client.redis_uri = 'redis-uri'
+
+        client.start()
+
+        expected_options = {
+            'decode_responses': False,
+            'retry_on_timeout': True,
+            'socket_timeout': 2,
+            'encoding': 'utf-8',
+        }
+
+        assert [
+            call('redis-uri', **expected_options)
+        ] == strict_redis_cls.from_url.call_args_list
