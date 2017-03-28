@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='nameko-redis',
-    version='1.0.0',
+    version='1.1.0',
     url='https://github.com/etataurov/nameko-redis/',
     license='Apache License, Version 2.0',
     author='etataurov',
@@ -10,7 +10,7 @@ setup(
     py_modules=['nameko_redis'],
     install_requires=[
         "nameko>=2.0.0",
-        "redis"
+        "redis",
     ],
     description='Redis dependency for nameko services',
     classifiers=[

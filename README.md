@@ -36,3 +36,13 @@ AMQP_URI: 'amqp://guest:guest@localhost'
 REDIS_URIS:
  development: 'redis://localhost:6379/0'
 ```
+
+You can also pass extra options to the class, like this:
+```python
+class MyOtherService(object):
+    name = "my_other_service"
+
+    redis = Redis('development', decode_responses=False, encoding='utf-8')
+
+    ...
+```
