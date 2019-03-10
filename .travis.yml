@@ -8,8 +8,7 @@ python:
     - "3.5"
     - "3.6"
 install:
-    - "pip install -U setuptools"
-    - "python setup.py install"
-    - "pip install -U pytest mock"
+    - pip install -U --editable ".[dev]"
 script:
-    - "py.test -v"
+    - flake8 nameko_redis.py test
+    - pytest -v

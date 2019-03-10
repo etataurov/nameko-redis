@@ -12,6 +12,12 @@ setup(
         "nameko>=2.0.0",
         "redis",
     ],
+    extras_require={
+        'dev': [
+            'pytest',
+            'flake8',
+        ],
+    },
     description='Redis dependency for nameko services',
     classifiers=[
         'Development Status :: 3 - Alpha',
