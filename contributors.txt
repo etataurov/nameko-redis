@@ -3,3 +3,5 @@ github: etataurov
 
 Fabrizio Romano <gianchub@gmail.com>
 github: gianchub
+
+Julio Trigo (@juliotrigo)
